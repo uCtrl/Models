@@ -1,9 +1,11 @@
 #ifndef UDEVICE_H
 #define UDEVICE_H
 
-#include "listitem.h"
+#include "nestedlistitem.h"
+#include "nestedlistmodel.h"
+#include "uscenario.h"
 
-class UDevice : public ListItem
+class UDevice : public NestedListItem
 {
     Q_OBJECT
 
@@ -30,6 +32,7 @@ public:
     QVariant data(int role) const;
     bool setData(const QVariant &value, int role);
     QHash<int, QByteArray> roleNames() const;
+    ListModel* nestedModel() const;
 
     // Properties
     inline QString id() const { return m_id; }
@@ -67,6 +70,7 @@ private:
     int m_precision;
     int m_status;
     QString m_unitLabel;
+    NestedListModel* m_scenarios;
 };
 
 #endif // UDEVICE_H

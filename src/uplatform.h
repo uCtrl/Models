@@ -2,6 +2,7 @@
 #define UPLATFORM_H
 
 #include "nestedlistitem.h"
+#include "nestedlistmodel.h"
 #include "udevice.h"
 
 class UPlatform : public NestedListItem
@@ -53,7 +54,7 @@ private:
     QString m_room;
     bool m_enabled;
     QString m_ip;
-    ListModel* m_devices;
+    NestedListModel* m_devices;
 };
 
 #endif // UPLATFORM_H

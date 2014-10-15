@@ -9,7 +9,10 @@ SOURCES += main.cpp \
     listmodel.cpp \
     nestedlistmodel.cpp \
     uplatform.cpp \
-    udevice.cpp
+    udevice.cpp \
+    uscenario.cpp \
+    utask.cpp \
+    ucondition.cpp
 
 HEADERS += \
     listmodel.h \
@@ -17,7 +20,10 @@ HEADERS += \
     nestedlistitem.h \
     nestedlistmodel.h \
     uplatform.h \
-    udevice.h
+    udevice.h \
+    uscenario.h \
+    utask.h \
+    ucondition.h
 
 OTHER_FILES += \
     main.qml

@@ -1,7 +1,8 @@
 #include "udevice.h"
 
-UDevice::UDevice(QObject* parent) : ListItem(parent)
+UDevice::UDevice(QObject* parent) : NestedListItem(parent)
 {
+    m_scenarios = new NestedListModel(new UScenario(), this);
 }
 
 UDevice::~UDevice()
@@ -88,4 +89,9 @@ QHash<int, QByteArray> UDevice::roleNames() const
     roles[unitLabelRole] = "unitLabel";
 
     return roles;
+}
+
+ListModel* UDevice::nestedModel() const
+{
+    return m_scenarios;
 }

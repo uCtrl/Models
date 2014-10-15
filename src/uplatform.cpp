@@ -2,7 +2,7 @@
 
 UPlatform::UPlatform(QObject* parent) : NestedListItem(parent)
 {
-    m_devices = new ListModel(new UDevice(), this);
+    m_devices = new NestedListModel(new UDevice(), this);
 }
 
 UPlatform::~UPlatform()
