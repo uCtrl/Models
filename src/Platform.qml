@@ -4,136 +4,206 @@ import "../devices" as Devices
 
 Rectangle {
 
-    color: "white"
+    color: "transparent"
     property variant model: null
     property variant marginSize: 20
 
-    Text {
-        id: name
+    Rectangle {
+        visible: (model == null)
 
-        text: getName()
+        anchors.fill: parent
+        anchors.margins: 20
 
-        color: "black"
+        color: "transparent"
 
-        font.bold: true
-        font.pixelSize: 20
+        Text {
 
-        anchors.top: parent.top
-        anchors.margins: marginSize
+            text: "Please select a platform"
 
-        anchors.left: parent.left
+            anchors.centerIn: parent
+
+            font.pointSize: 28
+            font.bold: true
+            color: "#AAAAAA"
+        }
     }
 
-    Row {
-        id: enabledRow
+    Rectangle {
+        id: informations
 
-        anchors.top: name.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+        visible: (model != null)
 
-        height: 40
+        anchors.fill: parent
 
-        Rectangle {
-            color: "white"
+        color: "white"
 
-            width: (parent.width / 2)
-            height: parent.height
+        Row {
+            id: nameRow
 
-            Text {
-                text: "Enabled"
+            height: 40
 
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.margins: 20
-
-                color: "#AAAAAA"
-                font.pixelSize: 14
-                font.bold: false
-            }
-        }
-
-        Rectangle {
-            color: "white"
-
-            width: (parent.width / 2)
-            height: parent.height
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: marginSize
 
             Text {
-                text: getEnabled()
+                id: name
 
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.margins: 20
+                width: (parent.width - editButton.width)
+
+                text: getName()
 
                 color: "black"
-                font.pixelSize: 14
-                font.bold: false
+
+                font.bold: true
+                font.pixelSize: 20
+
+                anchors.verticalCenter: editButton.verticalCenter
+            }
+
+            Rectangle {
+                id: editButton
+
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+
+                width: 40
+
+                color: "#0D9B0D"
+
+                radius: 2
             }
         }
-    }
 
-    Row {
-        id: roomRow
+        Row {
+            id: enabledRow
 
-        anchors.top: enabledRow.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+            anchors.top: nameRow.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
 
-        height: 40
+            height: 40
+
+            Rectangle {
+                color: "white"
+
+                width: (parent.width / 2)
+                height: parent.height
+
+                Text {
+                    text: "Enabled"
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.margins: 20
+
+                    color: "#AAAAAA"
+                    font.pixelSize: 14
+                    font.bold: false
+                }
+            }
+
+            Rectangle {
+                color: "white"
+
+                width: (parent.width / 2)
+                height: parent.height
+
+                Text {
+                    text: getEnabled()
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.margins: 20
+
+                    color: "black"
+                    font.pixelSize: 14
+                    font.bold: false
+                }
+            }
+        }
+
+        Row {
+            id: roomRow
+
+            anchors.top: enabledRow.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+            height: 40
+
+            Rectangle {
+                color: "white"
+
+                width: (parent.width / 2)
+                height: parent.height
+
+                Text {
+                    text: "Location"
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.margins: 20
+
+                    color: "#AAAAAA"
+                    font.pixelSize: 14
+                    font.bold: false
+                }
+            }
+
+            Rectangle {
+                color: "white"
+
+                width: (parent.width / 2)
+                height: parent.height
+
+                Text {
+                    text: getRoom()
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.margins: 20
+
+                    color: "black"
+                    font.pixelSize: 14
+                    font.bold: false
+                }
+            }
+        }
 
         Rectangle {
-            color: "white"
 
-            width: (parent.width / 2)
-            height: parent.height
+            id: separator
 
-            Text {
-                text: "Location"
+            height: 0.5
 
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.margins: 20
+            anchors.bottom: roomRow.bottom
 
-                color: "#AAAAAA"
-                font.pixelSize: 14
-                font.bold: false
-            }
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+            anchors.leftMargin: 20
+            anchors.rightMargin: 20
+
+            color: "#D4D4D4"
         }
 
-        Rectangle {
-            color: "white"
+        Devices.Devices {
+            id: rectDevice
 
-            width: (parent.width / 2)
-            height: parent.height
+            model: getDevices()
 
-            Text {
-                text: getRoom()
+            anchors.top: separator.bottom
+            anchors.bottom: parent.bottom
 
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.margins: 20
+            anchors.left: parent.left
+            anchors.right: parent.right
 
-                color: "black"
-                font.pixelSize: 14
-                font.bold: false
-            }
+            anchors.margins: 20
+
+            width: filters.width
         }
-    }
-
-    Devices.Devices {
-        id: rectDevice
-
-        model: getDevices()
-
-        anchors.top: roomRow.bottom
-        anchors.bottom: parent.bottom
-
-        anchors.left: parent.left
-        anchors.right: parent.right
-
-        anchors.margins: parent.marginSize
-
-        width: filters.width
     }
 
     function getName() {

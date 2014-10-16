@@ -14,5 +14,6 @@
     </qresource>
      <qresource prefix="/devices">
         <file>Devices.qml</file>
+        <file>Device.qml</file>
     </qresource>
 </RCC>

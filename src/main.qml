@@ -12,13 +12,11 @@ Rectangle {
     height: 600
     width: 1000
 
+    // @TODO    Replace with color library
     color: "#EDEDED"
 
     property variant pages: [
-        "platforms/Platforms",
-        "navbar/Navbar",
-        "titlebar/Titlebar",
-        "navbar/Navbar"
+        "platforms/Platforms"
     ];
 
     Component.onCompleted: {
@@ -243,7 +241,6 @@ Rectangle {
             }
         }
     }*/
-
 }
 
 
