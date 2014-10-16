@@ -17,20 +17,23 @@ Rectangle {
         anchors.left: parent.left
         anchors.margins: parent.marginSize
 
-        height: 40
+        height: 35
         width: (parent.width/2) - parent.marginSize
 
-        color: "yellow"
+        color: "transparent"
 
         UI.UTextbox {
             id: searchBox
 
             anchors.left: filters.left
             anchors.leftMargin: 0
+
+            anchors.right: filterCombo.left
+            anchors.rightMargin: 5
+
             anchors.verticalCenter: filters.verticalCenter
 
-            width: 100 //Math.round(filters.width - (filterCombo.width + header.separation))
-            height: 40 // filterCombo.height
+            height: filters.height; width: 2 * (filters.width / 3);
 
             state: "ENABLED"
 
@@ -43,6 +46,35 @@ Rectangle {
 
             /*onTextChanged: {
                 platformListContainer.setFilter(searchBox.text)
+            }*/
+        }
+
+        UI.UCombobox {
+            id: filterCombo
+
+            anchors.left: searchBox.right
+            anchors.leftMargin: 5
+
+            anchors.right: filters.right
+
+            anchors.verticalCenter: filters.verticalCenter
+
+            height: filters.height; width: (filters.width / 3);
+
+            itemListModel: [
+                { value: "room",     displayedValue: "Location",     iconId: "location"},
+                { value: "update",   displayedValue: "Last Updated", iconId: "clock"},        // Not in model yet
+                { value: "status",   displayedValue: "Status",       iconId: "switch"},       // Not in model yet
+                { value: "type",     displayedValue: "Device type",  iconId: "spinner3"},     // Not in platform model yet, still exists in device.
+                { value: "alphabet", displayedValue: "Name",         iconId: "Font"}
+            ]
+
+            /*onSelectedItemChanged: {
+                platformListContainer.section = selectedItem.value
+            }
+
+            Component.onCompleted: {
+                selectItem(0)
             }*/
         }
     }

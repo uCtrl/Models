@@ -17,6 +17,9 @@
         <file>Device.qml</file>
     </qresource>
     <qresource prefix="/ui">
+    	<file>UCombobox.qml</file>
+    	<file>UComboboxItem.qml</file>
+    	<file>UComboboxItemContainer.qml</file>
         <file>UImage.qml</file>
         <file>UTextbox.qml</file>
         <file>UFontAwesome.qml</file>
