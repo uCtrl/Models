@@ -2,7 +2,17 @@
     <qresource prefix="/qml">
         <file>main.qml</file>
     </qresource>
-    <qresource prefix="/test">
-        <file>Test.qml</file>
+    <qresource prefix="/navbar">
+        <file>Navbar.qml</file>
+    </qresource>
+    <qresource prefix="/titlebar">
+        <file>Titlebar.qml</file>
+    </qresource>
+    <qresource prefix="/platforms">
+        <file>Platforms.qml</file>
+        <file>Platform.qml</file>
+    </qresource>
+     <qresource prefix="/devices">
+        <file>Devices.qml</file>
     </qresource>
 </RCC>

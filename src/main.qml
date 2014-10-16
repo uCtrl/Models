@@ -1,11 +1,85 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.0
 
-import "../test" as Lol
+import "../navbar" as Navbar
+import "../titlebar" as Titlebar
 
 Rectangle {
-    Lol.Test { }
 
+    id: main
+
+    // Frame configuration
+    height: 600
+    width: 1000
+
+    color: "#EDEDED"
+
+    property variant pages: [
+        "platforms/Platforms",
+        "navbar/Navbar",
+        "titlebar/Titlebar",
+        "navbar/Navbar"
+    ];
+
+    Component.onCompleted: {
+        navbar.pages = pages
+    }
+
+    Titlebar.Titlebar {
+        id: titlebar
+
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        z: 1    // Always on top.
+    }
+
+    Navbar.Navbar {
+        id: navbar
+
+        anchors.top: titlebar.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+
+        z: 2    // Always on top.
+    }
+
+    // Set this property to another file name to change page
+    property string currentPage: "platforms/Platforms";
+
+    Repeater {
+        model: pages;
+
+        anchors.left: navbar.right;
+        anchors.right: parent.right;
+        anchors.top: titlebar.bottom;
+        anchors.bottom: parent.bottom;
+
+        delegate: Loader {
+            active: false;
+            asynchronous: true;
+
+            anchors.left: navbar.right;
+            anchors.right: parent.right;
+            anchors.top: titlebar.bottom;
+            anchors.bottom: parent.bottom;
+
+            visible: (currentPage === modelData);
+            source: "qrc:/%1.qml".arg(modelData)
+            onVisibleChanged:      { loadIfNotLoaded(); }
+            Component.onCompleted: { loadIfNotLoaded(); }
+
+            function loadIfNotLoaded () {
+                // to load the file at first show
+                if (visible && !active) {
+                    active = true;
+                }
+            }
+        }
+    }
+
+    /*
     Text {
         id: platLabel
         text: "PLATFORMS"
@@ -168,7 +242,7 @@ Rectangle {
                 }
             }
         }
-    }
+    }*/
 
 }
 
