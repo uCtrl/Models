@@ -16,4 +16,10 @@
         <file>Devices.qml</file>
         <file>Device.qml</file>
     </qresource>
+    <qresource prefix="/ui">
+        <file>UImage.qml</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>uCtrl-white.svg</file>
+    </qresource>
 </RCC>
