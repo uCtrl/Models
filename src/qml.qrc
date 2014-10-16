@@ -18,8 +18,39 @@
     </qresource>
     <qresource prefix="/ui">
         <file>UImage.qml</file>
+        <file>UTextbox.qml</file>
+        <file>UFontAwesome.qml</file>
+    </qresource>
+    <qresource prefix="/label">
+        <file>Default.qml</file>
+        <file>ComboBoxItemText.qml</file>
+        <file>Heading1.qml</file>
+        <file>Heading2.qml</file>
+        <file>Heading3.qml</file>
+        <file>Heading4.qml</file>
+        <file>Heading5.qml</file>
+        <file>Link.qml</file>
+        <file>TooltipText.qml</file>
+        <file>UInfoBoundedLabel.qml</file>
+        <file>UInfoLabel.qml</file>
+        <file>UInfoTitle.qml</file>
+        <file>UTabText.qml</file>
+        <file>UWeekDayPickerLabel.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>uCtrl-white.svg</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fontawesome-webfont.ttf</file>
+        <file>icomoon.ttf</file>
+        <file>Lato-Black.ttf</file>
+        <file>Lato-BlackItalic.ttf</file>
+        <file>Lato-Bold.ttf</file>
+        <file>Lato-BoldItalic.ttf</file>
+        <file>Lato-Hairline.ttf</file>
+        <file>Lato-HairlineItalic.ttf</file>
+        <file>Lato-Italic.ttf</file>
+        <file>Lato-LightItalic.ttf</file>
+        <file>Lato-Regular.ttf</file>
     </qresource>
 </RCC>

@@ -1,5 +1,7 @@
 import QtQuick 2.0
 
+import "../ui" as UI
+
 Rectangle {
 
     id: platformsList
@@ -19,6 +21,30 @@ Rectangle {
         width: (parent.width/2) - parent.marginSize
 
         color: "yellow"
+
+        UI.UTextbox {
+            id: searchBox
+
+            anchors.left: filters.left
+            anchors.leftMargin: 0
+            anchors.verticalCenter: filters.verticalCenter
+
+            width: 100 //Math.round(filters.width - (filterCombo.width + header.separation))
+            height: 40 // filterCombo.height
+
+            state: "ENABLED"
+
+            opacity: 0.75
+
+            placeholderText: "Search"
+
+            iconId: "search"
+            iconSize: 13
+
+            /*onTextChanged: {
+                platformListContainer.setFilter(searchBox.text)
+            }*/
+        }
     }
 
     Rectangle {
