@@ -25,8 +25,7 @@ HEADERS += \
     utask.h \
     ucondition.h
 
-OTHER_FILES += \
-    main.qml
+OTHER_FILES +=
 
 RESOURCES += \
     qml.qrc

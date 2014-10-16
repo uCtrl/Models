@@ -1,7 +1,11 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.0
 
+import "../test" as Lol
+
 Rectangle {
+    Lol.Test { }
+
     Text {
         id: platLabel
         text: "PLATFORMS"

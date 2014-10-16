@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
     QQmlContext* ctxt = viewer.rootContext();
     ctxt->setContextProperty("platformsModel", platforms);
 
-    viewer.setSource(QUrl("qrc:///main.qml"));
+    viewer.setSource(QUrl("qrc:///qml/main.qml"));
     viewer.show();
 
     return app.exec();
